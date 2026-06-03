@@ -7,9 +7,20 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
-
+        text: home
+      
+      - href: research.qmd
+        text: research
+      
+      - text: projects
+        menu: 
+          - href: sql_project.qmd
+            text: SQL project
+          - href: text_analysis_project.qmd
+            text: text analysis project
+          - href: Rpackage.qmd
+            text: R package
+            
 format:
   html:
     theme:

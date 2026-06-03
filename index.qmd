@@ -1,7 +1,22 @@
 ---
-title: "project"
+title: "Welcome!"
+image: images/ahewitt.jpeg
+toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 15em
 ---
 
-This is a Quarto website.
+::: {#bio}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Hello! I am Aiden Hewitt. I am a recent graduate from [Lawrence University](https://www.lawrence.edu/), [Appleton](https://en.wikipedia.org/wiki/Appleton,_Wisconsin), Wisconsin. I graduated with a major in Biology & Neuroscience with a minor in data science. This website is to highlight some of my projects in data science.
+
+Outside of data science I enjoy biotechnology and am pursuing a masters in Biotechnology from the University of Auckland, Auckland, New Zealand.
+
+
+::: {#landing-icons}
+[{{< fa brands github title="github" >}}](https://github.com/AidenHewitt/AidenHewitt.github.io){target="_blank"} &nbsp; [{{< fa envelope title="envelope" >}}](mailto:aiden@aidenhewitt.com)
+:::
+:::
+
