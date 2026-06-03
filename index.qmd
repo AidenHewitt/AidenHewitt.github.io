@@ -4,8 +4,8 @@ image: images/ahewitt.jpeg
 toc: false
 about: 
   template: jolla
-  image-shape: round
-  image-width: 15em
+  image-shape: rectangle
+  image-width: 30em
 ---
 
 ::: {#bio}

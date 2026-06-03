@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-**NOTE: This is a practice package created for expository purposes.**
+**NOTE: This is a practice package created for learning purposes.**
 
 # DNAtranslate
 
