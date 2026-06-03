@@ -14,6 +14,8 @@ We began by tokenizing the summaries to find the most frequently occurring words
 ```{r}
 #| code-fold: true
 #| echo: false
+#| message: false
+#| warning: false
 library(tidyverse)
 library(scales)
 library(tidytext)
