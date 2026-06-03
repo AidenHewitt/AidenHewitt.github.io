@@ -20,6 +20,8 @@ website:
             text: text analysis project
           - href: Rpackage.qmd
             text: R package
+          - href: CapstonePaper.qmd
+          - text: Senior Capstone
             
 format:
   html:

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Aiden Hewitt">
+
+<title>Capstone Paper – Aiden Hewitt</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Aiden Hewitt</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./research.html"> 
+<span class="menu-text">research</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="./sql_project.html">
+ <span class="dropdown-text">SQL project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./text_analysis_project.html">
+ <span class="dropdown-text">text analysis project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Rpackage.html">
+ <span class="dropdown-text">R package</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./CapstonePaper.html">
+ <span class="dropdown-text">Capstone Paper</span></a>
+  </li>  
+        <li class="dropdown-header">Senior Capstone</li>
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#ciliopathies" id="toc-ciliopathies" class="nav-link" data-scroll-target="#ciliopathies">Ciliopathies</a></li>
+  <li><a href="#c.-elegans-as-a-model-for-investigating-cilia-function" id="toc-c.-elegans-as-a-model-for-investigating-cilia-function" class="nav-link" data-scroll-target="#c.-elegans-as-a-model-for-investigating-cilia-function"><em>C. elegans</em> as a Model for Investigating Cilia Function</a></li>
+  <li><a href="#mapk-15" id="toc-mapk-15" class="nav-link" data-scroll-target="#mapk-15">MAPK-15</a></li>
+  <li><a href="#sec-16" id="toc-sec-16" class="nav-link" data-scroll-target="#sec-16">SEC-16</a></li>
+  <li><a href="#ced-1" id="toc-ced-1" class="nav-link" data-scroll-target="#ced-1">CED-1</a></li>
+  <li><a href="#phosphatidylserine" id="toc-phosphatidylserine" class="nav-link" data-scroll-target="#phosphatidylserine">Phosphatidylserine</a></li>
+  <li><a href="#ced-1-and-mapk-15-interaction" id="toc-ced-1-and-mapk-15-interaction" class="nav-link" data-scroll-target="#ced-1-and-mapk-15-interaction">CED-1 and MAPK-15 Interaction</a></li>
+  <li><a href="#proposed-pathway" id="toc-proposed-pathway" class="nav-link" data-scroll-target="#proposed-pathway">Proposed Pathway</a></li>
+  <li><a href="#ced-1-mutant-phenotype" id="toc-ced-1-mutant-phenotype" class="nav-link" data-scroll-target="#ced-1-mutant-phenotype">CED-1 Mutant Phenotype</a></li>
+  <li><a href="#mapk-15-mutant-phenotype" id="toc-mapk-15-mutant-phenotype" class="nav-link" data-scroll-target="#mapk-15-mutant-phenotype">MAPK-15 Mutant Phenotype</a></li>
+  <li><a href="#mapk-15ced-1-mutant-phenotype" id="toc-mapk-15ced-1-mutant-phenotype" class="nav-link" data-scroll-target="#mapk-15ced-1-mutant-phenotype">MAPK-15:CED-1 Mutant Phenotype</a></li>
+  <li><a href="#future-studies" id="toc-future-studies" class="nav-link" data-scroll-target="#future-studies">Future Studies</a></li>
+  <li><a href="#reference-list" id="toc-reference-list" class="nav-link" data-scroll-target="#reference-list">Reference List</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capstone Paper</h1>
+<p class="subtitle lead">The Roles of MAPK-15 and CED-1 in Ciliary Damage and Regeneration</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aiden Hewitt </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Cilia play major roles in human biology, and their dysfunction is linked to many diseases. Cilia function relies on a plethora of proteins and pathways. Previous research has shown that loss of function of CED-1 and MAPK-15 has led to synergistic defects in cilia function. However, CED-1 and MAPK-15 interaction remains unknown. We argue that MAPK-15 damage causes ciliary defects which rely on CED-1 and glial cells for regeneration and rescue. To build a testable model of their interaction, we review specific processes involved in cilia growth and maintenance that act upstream or downstream of MAPK-15 and CED-1.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Cilia are microtubule-based organelles that project from cell surfaces in virtually all eukaryotic organisms (Inglis <em>et al.,</em> 2007). Cilia take on two different forms, motile and non-motile, each with different functions. For example, motile cilia found in epithelial cells within humans beat synchronously to move mucus. Each epithelial cell may have 200–300 cilia (cite). Non-motile cilia detect mechanical and chemical stimuli and play a major role in cell-to-cell signaling with roles in regulating cell proliferation and maintaining tissue homeostasis (Berbari <em>et al.,</em> 2009). Non-motile cilia can be found on nearly every human cell. Cilia are complex organelles that require a wide variety of proteins for assembly and maintenance.</p>
+<p>Motile and non-motile cilia (Fig. 1) protrude from the surface of cells and are anchored to the cell by basal bodies. From these basal bodies, the axonemal core extends, providing support. The non-motile axoneme consists of nine outer microtubule doublets arranged around the center in a configuration known as 9+0. Motile ciliary axonemes are characterized by a 9+2 architecture with nine outer microtubule doublets plus a central pair of microtubules, utilized by linked motor proteins called dynein arms for movement (Klena <em>et al.,</em> 2022).</p>
+<p>Cilia do not have the ability to synthesize proteins on their own and rely on anterograde transport, the movement of vesicles from the endoplasmic reticulum and golgi apparatus, to form and operate. Proteins need to pass through the “transition zone,” a membrane-rich area that regulates the entry of proteins into and out of the cilium. Once past the transition zone, the Interflagellar Transport (IFT) mechanism is responsible for shuttling proteins into, out of, and within the cilia (Meleppattu <em>et al.,</em> 2023).</p>
+<div id="fig-cilia-structure" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cilia-structure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/image1.png" class="img-fluid figure-img" style="width:85.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cilia-structure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: <strong>Figure 1. Cilia Structure.</strong> The cilia membrane encloses the axonemal core (A), made up of 9+0 or 9+2 microtubule pairs in non-motile (B) and motile cilia (C). The cilia membrane contains proteins and receptors necessary for cilia function. The basal body at the base of the cilia dictates microtubule organization and anchors cilia below the cell surface. The transition zone acts as a boundary, keeping proteins out of and accepting others into the extracellular port of the cilia. Figure modified from <a href="https://ciliopathyalliance.org/cilia" class="uri">https://ciliopathyalliance.org/cilia</a>.
+</figcaption>
+</figure>
+</div>
+<p>The processes responsible for transporting proteins to the cilia play a key role in ciliary health.</p>
+</section>
+<section id="ciliopathies" class="level2">
+<h2 class="anchored" data-anchor-id="ciliopathies">Ciliopathies</h2>
+<p>Ciliopathies are diseases characterized by dysfunction of cilia. These disorders are largely caused by single-gene mutations in proteins required for ciliary growth and maintenance. Depending on the protein damage, many different diseases can occur. Primary Ciliary Dyskinesia occurs when motile cilia in the lungs stop beating synchronically to move mucus, dust, and bacteria, leading to chronic infections (Sagel <em>et al.,</em> 2011). Polycystic Kidney Disease (PKD) is the most common potentially lethal genetic disorder in humans (Grantham <em>et al.,</em> 2001). PKD is caused by damage to non-motile cilia, leading to the formation of cysts and eventual kidney failure due to the breakdown of cell-to-cell signaling (Liwei Huang <em>et al.,</em> 2014). Damage to proteins responsible for building and upkeeping the transition zone have been linked to thirteen diseases (Gonçalves <em>et al.,</em> 2017). There are 35 known disorders given the broad term ciliopathies. Understanding the pathways responsible for ciliary function is crucial to treating and preventing ciliopathies.</p>
+<p>Cilia are highly conserved throughout evolution within eukaryotes due to their important roles for organism survival. Homologs are genes or proteins in different species that share a common evolutionary ancestor and often retain similar functions. Humans share 87 conserved homologs with <em>Chlamydomonas reinhardtii</em> (Pazour 2005), or green algae, relatively a much simpler organism. This suggests that the molecular blueprint of cilia is evolutionarily ancient, likely existing in the last eukaryotic common ancestor. Because core ciliary protein mechanisms are conserved, studies in simpler model organisms provide critical insight into the molecular basis of human ciliopathies.</p>
+</section>
+<section id="c.-elegans-as-a-model-for-investigating-cilia-function" class="level2">
+<h2 class="anchored" data-anchor-id="c.-elegans-as-a-model-for-investigating-cilia-function"><em>C. elegans</em> as a Model for Investigating Cilia Function</h2>
+<p><em>Caenorhabditis elegans</em> is an ideal model organism for investigating cilia function. These organisms have been heavily studied for many years, with their first mention in a paper coming from 1899. Then, from 1963 to 1965, Sydney Brenner spearheaded the adoption of <em>C. elegans</em> as a model organism due to its low cell count, ease of reproduction, and transparent body, all reasons they are still prevalent today. The only ciliated cells within <em>C. elegans</em> are in the central nervous system (Inglis <em>et al.,</em> 2005–2018), making them suitable for mutagen-based studies looking into cilia. Mutagen-based studies mutate a protein, causing dysfunction, to reveal its role and the phenotype resulting from its damage. Typically, this dysfunction could prevent organisms from developing properly as, but not in <em>C. elegans</em> due to cilia being confined to ciliated dendrites.</p>
+<p><em>C. elegans</em> are ideal for studying proteins. While <em>C. elegans</em> are primarily hermaphrodites, males do occur, enabling crosses between transgenic strains provided the mutant males do not have mating defects. This avoids the need for costly transgene microinjection when a genetic cross between mutant strains is sufficient. Due to their transparent bodies, chimeric proteins can be created by adding a fluorescent marker to the protein of interest, enabling research into the localization of proteins required for ciliary function within live specimen. There are several robust methods for detecting cilia function in live <em>C. elegans</em>. <em>C. elegans</em> with functional cilia take up fluorescent dye in six amphid neurons in the head and tail (Starich <em>et al.,</em> 1995), whereas <em>C. elegans</em> with defective cilia do not (Perkins <em>et al.,</em> 1986). <em>C. elegans</em> with defective cilia will be unable to avoid regions with high osmotic strength (Culotti &amp; Russel, 1978) and males can have mating defects (O’Hagan <em>et al.,</em> 2014).</p>
+<p><em>C. elegans</em> contain 303 neurons, 60 of which are ciliated-sensory neurons (CSN), primarily located in the head and tail. Many CSN are located in the head and project from the nerve ring, a region with a dense composition of neuronal connections.</p>
+<div id="fig-amphid-sensilla" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-amphid-sensilla-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/image2.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-amphid-sensilla-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: <strong>Figure 2.</strong> <em>C. elegans</em> Amphid Sensilla Sensory Organ. Neuronal dendrites are shown in purple. Cilia are shown in pink. The socket glial cell is shown in salmon. The sheath glial cell is shown in cyan. Image is altered from Perkins et al., 1986.
+</figcaption>
+</figure>
+</div>
+<p>The primary sensory organs of <em>C. elegans</em> are the amphid sensilla located on either side of the head. These are comprised of 12 sensory neurons (White <em>et al.,</em> 1986) whose cilia are exposed to the outside world via small crypts in the cuticle (skin) surface. These neurons are specialized to detect salts, deterrents, pH, pheromone and bacterial volatiles (Venkatesh <em>et al.,</em> 2023). Another major sensory organ is the phasmid, located in the tail, which also exposes cilia to the environment.</p>
+<p>Glial cells provide crucial support to nearby ciliated dendritic cells; in <em>C. elegans</em>, 50 glial cells carry out these roles. Socket glial cells guide neurons to specific organs, while sheath glial cells embed sensory neuron receptive endings before exposing them to the outside environment. Each amphid sensilla (Fig. 2) consists of two glial cells, one sheath cell, and one socket cell. Removing the sheath glial cells will cause impaired sensory ability and the degradation of sensory endings. This same effect can be caused by blocking the secretory pathway within these glial cells (Shai Shaham <em>et al.,</em> 2015). Without functioning glial cells, ciliated neurons would be dysfunctional.</p>
+</section>
+<section id="mapk-15" class="level2">
+<h2 class="anchored" data-anchor-id="mapk-15">MAPK-15</h2>
+<p>Kinases are essential for cell signaling because they modulate the activity of other molecules by adding phosphate groups to them, activating or deactivating them. Mitogen-activated protein kinases (MAPKs) are a highly conserved family of enzymes that function in a multitude of cellular processes. Mitogens are substances that trigger cell division, which was MAPK’s first discovered effect. Despite the name, MAPKs are also highly activated by cell stressors such as DNA damage, low osmolarity, oxidative stress, hyperosmotic stress, etc. MAPK-15 is an atypical kinase that is known to regulate cilia length, but this has a poorly understood pathway.</p>
+<p>MAPK-15 has been shown to act upstream of autophagic processes (Colecchia <em>et al.,</em> 2012), and when removed, autophagic activity decreases. MAPK-15 activity is increased in response to starvation, DNA damage, and activity of human oncogenes (Colecchia <em>et al.,</em> 2018). Additionally, in human and <em>Drosophila melanogaster</em> cells, MAPK-15 has been shown to inhibit SEC-16, reducing anterograde transport of proteins, or transport of proteins away from the nucleus (Zacharogianni <em>et al.,</em> 2011).</p>
+<p>MAPK-15 has a role that is evolutionarily conserved across species in cilium biology and is required for cilia to form properly. MAPK-15 has even been identified in a very early branch of eukaryotic life: single-celled Apicomplexan parasites, which have specialized cilia that fail to form without MAPK-15. This finding suggests that the protein has an ancient and central role in ciliogenesis (O’Shaughnessy <em>et al.,</em> 2020). In multi-ciliated Xenopus and mouse cells, MAPK-15 depletion reduces motile cilia number and length. This is caused by defects in the actin network preventing basal body migration (Miyatake <em>et al.,</em> 2015). Loss of MAPK-15 function within <em>C. elegans</em> or loss of its homologue in human cells causes defects in cilium length, morphology, and function (Piasecki <em>et al.,</em> 2017) and disrupts the localization of the basal body and axonemal proteins important for cilium structure, trafficking, and ciliary gating (Kazatskaya <em>et al.,</em> 2017). Cilia are unable to properly form across eukaryotic life without MAPK-15.</p>
+</section>
+<section id="sec-16" class="level2">
+<h2 class="anchored" data-anchor-id="sec-16">SEC-16</h2>
+<p>SEC-16 is a crucial protein for the function of the endoplasmic reticulum (ER), which has a vital role in the secretory pathway, crucial for cilia health. SEC-16 is responsible for the generation of endoplasmic reticulum exit sites (ERES) (Yorimitsu <em>et al.,</em> 2012). At ERES, SEC-16 facilitates the application of the protein coat to vesicles traveling anterograde, or away from the nucleus. Both overexpressing or removing SEC-16 results in the organizational dysfunction of the ER and reductions in anterograde transport (Zacharogianni <em>et al.,</em> 2011) crucial to cilia health.</p>
+</section>
+<section id="ced-1" class="level2">
+<h2 class="anchored" data-anchor-id="ced-1">CED-1</h2>
+<p>In addition to a functional interaction with SEC-16, it appears that MAPK15 has a surprising connection with CED-1. Cell death abnormality protein 1 (CED-1) is a cell surface receptor that has a vital role in cell death. CED-1 is required for the engulfment of cells undergoing programmed cell death (Zhou <em>et al.,</em> 2001) and is expressed primarily around dying cells, where it localizes to the cell surface. CED-1 recognizes dying cells and recruits downstream effectors to enable the engulfment of the dying cell (Raiders <em>et al.,</em> 2021). One of these effectors is CED-6, which restructures the cytoskeleton of the engulfing cell. When the CED-1 gene is disrupted, apoptotic cells are not efficiently engulfed or cleared. Removal of dying cells is essential for maintaining tissue homeostasis; in humans, failure of this process can trigger inflammatory responses (Erwig <em>et al.,</em> 2008). In mammals, mobile phagocytes express Scavenger Receptor from Endothelial Cells (SREC), a CED-1 homologue, which recognize and engulf apoptotic cells. In contrast, <em>C. elegans</em> lack specialized phagocytes and instead rely on neighboring cells for cell-corpse engulfment (Robertson and Thomson 1982; Raiders <em>et al.,</em> 2021).</p>
+<div id="fig-phospholipid" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-phospholipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/image3.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-phospholipid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: <strong>Figure 3.</strong> Phospholipid Bi-layer Makeup of Inner and Outer Leaflet in Healthy Cell. The inside of the cell concentrates negatively charged phospholipids including phosphatidylserine and phosphatidylinositol. The outside of the membrane concentrates glycolipids and sphingomyelin. Figure taken from <em>The Cell: A Molecular Approach</em> 9e, Figure 14.3.
+</figcaption>
+</figure>
+</div>
+<p>CED-1 is also involved in regulating neurite pruning, the process of removing axons, essential for neuron health. In <em>Drosophila melanogaster</em>, glial cells express their ortholog of CED-1, have been observed to clear apoptotic neurons in the developing central nervous system (Freeman <em>et al.,</em> 2003). After this clearance, neurons are prompted to regenerate and reestablish themselves into the neuronal network.</p>
+</section>
+<section id="phosphatidylserine" class="level2">
+<h2 class="anchored" data-anchor-id="phosphatidylserine">Phosphatidylserine</h2>
+<p>Phosphatidylserine (PS) is a negatively charged lipid and a major component of the inner leaflet of the cell membrane (Fig. 3); however, during cell death, PS is expressed on the outer leaflet (VA Fadok <em>et al.,</em> 1992). In <em>C. elegans</em>, this membrane asymmetry is maintained by specialized enzymes called flippases. It has been proposed that inactivation of these flippases leads to the dysregulation of membrane asymmetry (Segawa <em>et al.,</em> 2014), as overtime lipids are able to flip from the inner to outer membrane, or vice versa, without any facilitation.</p>
+<p>PS has several transport pathways to the cell membrane and the ciliary membrane. PS can hitch a ride as part of the vesicle released from the endoplasmic reticulum following anterograde transport. PS can also be transported by lipid transport proteins (LTP), which extract PS from the smooth endoplasmic reticulum’s cell membrane and transports it to other compartments (Alenka Čopič 2023).</p>
+<p>PS is crucial for proper cell engulfment. As previously stated, CED-1 recognizes cell death markers and starts the engulfment process. TTR-52 is a secreted binding protein in <em>C. elegans</em> which attaches to PS on the outer leaflet and facilitates the binding of CED-1 (Wang <em>et al.,</em> 2011). Both TTR-52 and PS are required for proper engulfment of apoptotic cells by CED-1. In humans, aging is linked to reduced levels of PS, which in turn is linked to cognitive impairment and Alzheimer’s disease (Bo-Kyoung Kim <em>et al.,</em> 2020), highlighting a potential similar pathway in humans.</p>
+</section>
+<section id="ced-1-and-mapk-15-interaction" class="level2">
+<h2 class="anchored" data-anchor-id="ced-1-and-mapk-15-interaction">CED-1 and MAPK-15 Interaction</h2>
+<p>Research done by Kathryn Williams in 2024 revealed that there is an interaction between CED-1 and MAPK-15. If MAPK-15 was damaged, <em>C. elegans</em> were dye-filling defective in the phasmid sensilla, indicative of cilia dysfunction, but dye-filled normally in the amphid sensilla. If CED-1 was damaged, <em>C. elegans</em> dye-filled normally at both locations. However, if both genes were damaged, <em>C. elegans</em> were dye-filling defective at both locations, indicative of high cilia damage. An interaction between these two proteins is evident based on their synergistic effect on cilia dysfunction; however, the mechanism of this interaction is unknown.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pathway-healthy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pathway-healthy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/image4.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pathway-healthy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: <strong>Figure 4.</strong> Proposed pathway explaining MAPK-15’s and CED-1’s interaction in maintaining cilia health.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pathway-ced1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pathway-ced1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/image5.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pathway-ced1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: <strong>Figure 5.</strong> Proposed pathway explaining mutant CED-1’s role in degrading cilia health.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="proposed-pathway" class="level2">
+<h2 class="anchored" data-anchor-id="proposed-pathway">Proposed Pathway</h2>
+<p>Fluorescent microscopy has revealed that MAPK-15 is primarily present within ciliated neurons of <em>C. elegans</em> (Piasecki unpublished). MAPK-15 negatively regulates SEC-16 (Zacharogianni <em>et al.,</em> 2011), thereby limiting excessive formation of ERES (Yorimitsu <em>et al.,</em> 2012) (Fig. 4). ERES are necessary for the export of proteins from the ER, some of which are sent to cilia where they contribute to ciliary maintenance and growth. Among the proteins shipped from ERES is TTR-52, which is excreted. During cell death, PS is exposed on the outer leaflet of the plasma membrane and is bound by secreted TTR-52. TTR-52 is subsequently recognized by CED-1 receptors on neighboring cells (Wang <em>et al.,</em> 2011), triggering vast changes to the cytoskeleton that enable the engulfment of damaged cilia leading to cilia regeneration and repair.</p>
+</section>
+<section id="ced-1-mutant-phenotype" class="level2">
+<h2 class="anchored" data-anchor-id="ced-1-mutant-phenotype">CED-1 Mutant Phenotype</h2>
+<p>This model can explain the CED-1 mutant phenotype observed by Williams. CED-1 mutants had functional cilia. Within these CED-1 mutants, <em>C. elegans</em> had a normal dye-filling phenotype (Williams 2024), meaning cilia are functional. This suggests that CED-1 damage alone is not responsible for dysfunctional cilia. CED-1 damage should only prevent the removal of damaged cilia (Fig. 5), without causing additional harm.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pathway-mapk15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pathway-mapk15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/image6.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pathway-mapk15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: <strong>Figure 6.</strong> Proposed pathway explaining mutant MAPK-15’s role in degrading cilia health.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pathway-double" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pathway-double-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/image7.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pathway-double-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: <strong>Figure 7.</strong> Proposed pathway revealing MAPK-15 and CED-1’s interaction in degrading cilia health.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="mapk-15-mutant-phenotype" class="level2">
+<h2 class="anchored" data-anchor-id="mapk-15-mutant-phenotype">MAPK-15 Mutant Phenotype</h2>
+<p>MAPK-15 mutant <em>C. elegans</em> had mild cilia defects. In these mutants, <em>C. elegans</em> are dye-filling defective in the phasmid, but not in the head sensilla. This location specific difference in cilia function is likely caused by morphological differences between amphid and phasmid glia, with phasmid glia playing a potentially smaller role in supporting ciliated dendritic tips. Dysfunction is likely caused by overexpression of SEC-16, resulting in excessive ERES, disrupting ER membrane regulation and reducing anterograde vesicles necessary for cilia development (Fig. 6).</p>
+<p>Despite this, cilia in the head sensilla remain fully functional, reinforcing the importance of glial cells in secreting proteins critical for ciliary maintenance. MAPK-15 is not expected to impact glial cells, as laser confocal microscopy has not revealed MAPK-15 in glial cells (Piasecki unpublished). Additionally, ciliary lengths in head sensilla are substantially reduced in MAPK-15 mutants (0.28 μm) compared to wildtype (1.27 μm) (Williams 2024), likely caused by pruning processes mediated by CED-1 and dependent on TTR-52 secretion, presumably from glial cells.</p>
+</section>
+<section id="mapk-15ced-1-mutant-phenotype" class="level2">
+<h2 class="anchored" data-anchor-id="mapk-15ced-1-mutant-phenotype">MAPK-15:CED-1 Mutant Phenotype</h2>
+<p>MAPK-15:CED-1 double mutants had highly dysfunctional cilia. Within this strain, <em>C. elegans</em> were dye-filling defective in the phasmid and the head sensilla. These two proteins have a synergistic effect on the dysfunction of cilia (Fig. 7), not observed in single mutants. These double mutants had longer cilia, 0.80 μm, than MAPK-15 single mutants (Williams 2024), implying that the loss of CED-1 impairs pruning of dysfunctional cilia, increasing mean ciliary length. Additionally, MAPK-15:CED-1 double mutants are missing fewer cilia than MAPK-15 mutants, but still more than wildtype (Williams 2014), supporting the role of CED-1 in clearing cilia damaged by MAPK-15 loss, which is crucial for cilia function.</p>
+</section>
+<section id="future-studies" class="level2">
+<h2 class="anchored" data-anchor-id="future-studies">Future Studies</h2>
+<p>Confirmation of this model can be easily tested at various levels. First, Annexin V can be used to detect if phosphatidylserine is expressed on the cilia membrane surface when damaged. Annexin V preferentially binds to negatively charged phospholipids, like phosphatidylserine. Using fluorescein isothiocyanate-labeled Annexin V, apoptotic cells can be easily quantified (G. Koopman et al.&nbsp;1994). This method has been used to stain apoptotic germ cells within <em>C. elegans</em> (Vengegas &amp; Zhou, 2007). It is hypothesized that if stained, dysfunctional cilia will co-localize with a pre-existing CED-1:GFP strain. This would confirm that CED-1 is acting to engulf cilia through TRR-52’s detection of PS.</p>
+<p>Next, we would compare the CED-1:GFP Annexin V staining with a CED-1:GFP plus mutant MAPK-15 strain. This would reveal if MAPK-15 damage interferes with TRR-52 secretion, which we hypothesize it will not. An alternative way to test TRR-52 secretion is by utilizing a construct tagged with TRR-52:mCherry (Wang <em>et al.,</em> 2011) with universal expression. This would reveal if the source of TRR-52 tagging apoptotic cilia is glial cells or ciliated dendrites. We hypothesize that both contribute to secreting TRR-52 normally, and only glial cells when MAPK-15 is damaged. This allows us to assess if MAPK-15 is reducing anterograde transport. Our model hypothesizes that MAPK-15 will reduce anterograde transport, resulting in a reduction of TRR-52 secretion by ciliated dendrites.</p>
+<p>Understanding the mechanism by which these proteins interact to promote cilia function in healthy <em>C. elegans</em> will support research into homologous pathways in humans. This will ultimately result in expanding on the knowledge of the mechanisms that cause ciliopathies, allowing for better treatment.</p>
+</section>
+<section id="reference-list" class="level2">
+<h2 class="anchored" data-anchor-id="reference-list">Reference List</h2>
+<p>Bae, Y., and Barr, M.M. (2011). Sensory roles of neuronal cilia: Cilia development, morphogenesis, and function in C. elegans.</p>
+<p>Berbari, N.F., O’connor, A.K., Haycraft, C.J., and Yoder, B.K. (2010). The Primary Cilium as a Complex Signaling Center. Current Biology <em>19,</em> R526.</p>
+<p>Colecchia, D., Dapporto, F., Tronnolone, S., Salvini, L., and Chiariello, M. (2018). MAPK15 is part of the ULK complex and controls its activity to regulate early phases of the autophagic process. Journal of Biological Chemistry <em>293,</em> 15962.</p>
+<p>Colecchia, D., Strambi, A., Sanzone, S., Iavarone, C., Rossi, M., Dall’Armi, C., Piccioni, F., Verrotti di Pianella, A., and Chiariello, M. (2012). MAPK15/ERK8 stimulates autophagy by interacting with LC3 and GABARAP proteins. Autophagy <em>8,</em> 1724–1740.</p>
+<p>Čopič, A., Dieudonné, T., and Lenoir, G. (2023). Phosphatidylserine transport in cell life and death. Curr. Opin. Cell Biol. <em>83,</em> 102192.</p>
+<p>Culotti J. G. (1978). Osmotic avoidance defective mutants of the nematode Caenorhabditis elegans. Genetics <em>90,</em> 243–256.</p>
+<p>Erwig, L., and Henson, P.M. (2007). Clearance of apoptotic cells by phagocytes. Cell Death Differ <em>15,</em> 243.</p>
+<p>Fadok, V.A., Voelker, D.R., Campbell, P.A., Cohen, J.J., Bratton, D.L., and Henson, P.M. (1992). Exposure of phosphatidylserine on the surface of apoptotic lymphocytes triggers specific recognition and removal by macrophages. J. Immunol. <em>148,</em> 2207–2216.</p>
+<p>Freeman, M.R., Delrow, J., Kim, J., Johnson, E., and Doe, C.Q. (2003). Unwrapping Glial Biology: Gcm Target Genes Regulating Glial Development, Diversification, and Function. Neuron (Cambridge, Mass.) <em>38,</em> 567–580.</p>
+<p>Gonçalves, J., and Pelletier, L. (2017). The Ciliary Transition Zone: Finding the Pieces and Assembling the Gate. Molecules and Cells <em>40,</em> 243.</p>
+<p>Grantham, J.J. (2001). Polycystic kidney disease: from the bedside to the gene and back. Current Opinion in Nephrology and Hypertension <em>10,</em> 533–542.</p>
+<p>Huang, L., and Lipschutz, J.H. (2015). Cilia and polycystic kidney disease, kith and kin. Birth Defects Research Pt C <em>102,</em> 174.</p>
+<p>John Graham White, Eileen Southgate, J. N. Thomson, and Sydney Brenner. (1984). The Structure of the Nervous System of the Nematode Caenorhabditis elegans (The Mind of a Worm). Philosophical Transactions of the Royal Society of London. B, Biological Sciences.</p>
+<p>Kazatskaya, A., Kuhns, S., Lambacher, N.J., Kennedy, J.E., Brear, A.G., Mcmanus, G.J., Sengupta, P., and Blacque, O.E. (2017). Primary Cilium Formation and Ciliary Protein Trafficking Is Regulated by the Atypical MAP Kinase MAPK15 in Caenorhabditis elegans and Human Cells. Genetics <em>207,</em> 1423.</p>
+<p>Kim, B., and Park, S. (2020). Phosphatidylserine modulates response to oxidative stress through hormesis and increases lifespan via DAF-16 in Caenorhabditis elegans. Biogerontology <em>21,</em> 231–244.</p>
+<p>Klena, N., and Pigino, G. (2022). Structural Biology of Cilia and Intraflagellar Transport.</p>
+<p>Koopman, G., Reutelingsperger, C.P.M., Kuijten, G.A.M., Keehnen, R.M.J., Pals, S.T., and van Oers, M.H.J. (1994). Annexin V for Flow Cytometric Detection of Phosphatidylserine Expression on B Cells Undergoing Apoptosis. Blood <em>84,</em> 1415–1420.</p>
+<p>Meleppattu, S., Zhou, H., Dai, J., Gui, M., and Brown, A. (2023). Mechanism of IFT-A polymerization into trains for ciliary transport. Cell <em>185,</em> 4986.</p>
+<p>Miyatake, K., Kusakabe, M., Takahashi, C., and Nishida, E. (2015). ERK7 regulates ciliogenesis by phosphorylating the actin regulator CapZIP in cooperation with Dishevelled. Nat Commun <em>6.</em></p>
+<p>Ni, W., Xu, S., Tepperman, J.M., Stanley, D.J., Maltby, D.A., Gross, J.D., Burlingame, A.L., Wang, Z., and Quail, P.H. (2014). A mutually assured destruction mechanism attenuates light signaling in Arabidopsis. Science (American Association for the Advancement of Science) <em>344,</em> 1160–1164.</p>
+<p>O’Shaughnessy, W.J., Hu, X., Beraki, T., McDougal, M., and Reese, M.L. (2020). Loss of a conserved MAPK causes catastrophic failure in assembly of a specialized cilium-like structure in Toxoplasma gondii. Molecular Biology of the Cell <em>31,</em> 881–888.</p>
+<p>Perkins, L.A., Hedgecock, E.M., Thomson, J.N., and Culotti, J.G. (1986). Mutant sensory cilia in the nematode Caenorhabditis elegans. Dev. Biol. <em>117,</em> 456–487.</p>
+<p>Peter N. Inglis, Guangshuo Ou, Michel R. Leroux, and Jonathan M. Scholey. (2018). The sensory cilia of Caenorhabditis elegans. WormBook: The Online Review of C. Elegans Biology.</p>
+<p>Piasecki, B.P., Sasani, T.A., Lessenger, A.T., Huth, N., and Farrell, S. (2017). MAPK-15 is a ciliary protein required for PKD-2 localization and male mating behavior in Caenorhabditis elegans. Cytoskeleton <em>74,</em> 390–402.</p>
+<p>Raiders, S., Black, E.C., Bae, A., Macfarlane, S., Klein, M., Shaham, S., and Singhvi, A. (2021). Glia actively sculpt sensory neurons by controlled phagocytosis to tune animal behavior. eLife <em>10.</em></p>
+<p>Robertson, A.M.G., and Thomson, J.N. (1982). Morphology of programmed cell death in the ventral nerve cord of Caenorhabditis elegans larvae. Development <em>67,</em> 89–100.</p>
+<p>Sagel, S.D., Davis, S.D., Campisi, P., and Dell, S.D. (2011). Update of Respiratory Tract Disease in Children with Primary Ciliary Dyskinesia. Proceedings of the American Thoracic Society <em>8,</em> 438.</p>
+<p>Shaham, S., Barres, B.A., Freeman, M.R., and Stevens, B. (2015). Glial Development and Function in the Nervous System of Caenorhabditis elegans. Cold Spring Harb Perspect Biol <em>7.</em></p>
+<p>Starich, T.A., Herman, R.K., Kari, C.K., Yeh, W.H., Schackwitz, W.S., Schuyler, M.W., Collet, J., Thomas, J.H., and Riddle, D.L. (1995a). Mutations Affecting the Chemosensory Neurons of Caenorhabditis elegans. Genetics <em>139,</em> 171–188.</p>
+<p>Starich, T.A., Herman, R.K., Kari, C.K., Yeh, W.H., Schackwitz, W.S., Schuyler, M.W., Collet, J., Thomas, J.H., and Riddle, D.L. (1995b). Mutations Affecting the Chemosensory Neurons of Caenorhabditis elegans. Genetics <em>139,</em> 171–188.</p>
+<p>Venegas, V., Zhou, Z., and Mclean, M. (2007). Two Alternative Mechanisms That Regulate the Presentation of Apoptotic Cell Engulfment Signal in Caenorhabditis elegans.</p>
+<p>Venkatesh, S.R., Gupta, A., and Singh, V. (2023). Amphid sensory neurons of Caenorhabditis elegans orchestrate its survival from infection with broad classes of pathogens. Life Sci. Alliance <em>6.</em></p>
+<p>Wang, X., Li, W., Zhao, D., Liu, B., Shi, Y., Chen, B., Yang, H., Guo, P., Geng, X., Shang, Z., <em>et al.</em> (2011). Caenorhabditis elegans transthyretin-like protein TTR-52 mediates recognition of apoptotic cells by the CED-1 phagocyte receptor. Nat Cell Biol <em>12,</em> 655.</p>
+<p>Williams, K., and Piasecki, B. (2024). Cilia later! Characterizing Cilia Morphology and Function of mapk-15 and ced-1 Single- and Double-Mutants in C. elegans Dopaminergic Neurons.</p>
+<p>Yorimitsu, T., and Sato, K. (2012). Molecular Biology of the Cell.</p>
+<p>Zacharogianni, M., Kondylis, V., Tang, Y., Farhan, H., Xanthakis, D., Fuchs, F., Boutros, M., and Rabouille, C. (2011). ERK7 is a negative regulator of protein secretion in response to amino-acid starvation by modulating Sec16 membrane association. Embo J <em>30,</em> 3684.</p>
+<p>Zhou, Z., Hartwieg, E., and Horvitz, H.R. (2001). CED-1 Is a Transmembrane Receptor that Mediates Cell Corpse Engulfment in C. elegans. Cell <em>104,</em> 43–56.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
