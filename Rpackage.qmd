@@ -1,5 +1,5 @@
 ---
-title: "R package"
+title: "DNAtranslate (R Package)"
 ---
 
 ```{r, include = FALSE}
@@ -11,53 +11,61 @@ knitr::opts_chunk$set(
 )
 ```
 
-**NOTE: This is a practice package created for learning purposes.**
+> **Note:** This is a practice package built for learning purposes.
 
-# DNAtranslate
+## Overview
 
-<!-- badges: start -->
-<!-- badges: end -->
+`DNAtranslate` is a small R package I created to learn the package-development workflow. It provides simple helpers for importing DNA sequences, reversing them, and translating them into protein sequences. It is not intended for production use—well-established packages handle these tasks far more robustly. For importing sequences in particular, functions such as `readFastq` preserve considerably more information.
 
-This R package was created to experiment with the R package creation process and simplify the import of DNA sequenes, translation of DNA sequences and reversal of DNA sequences. I would not recommend it for real world problems when much more capable packages exist. read_fastQ is a much more capable way to import sequences while preserving much more information.
+Here is a [link](https://github.com/ADC-405-S26/DNAtranslate) to the full source code
 
 ## Installation
 
-You can install the development version of Rpackage from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("ADC-405-S26/DNAtranslate")
 ```
 
-## Example
+## Examples
 
-This is a basic example which shows you how import a DNA sequence, reverse it, and then translate it into proteins.
+The examples below shows how to import a DNA sequence, reverse it, and translate it into a protein sequence.
 
-# Import DNA sequences
+### Importing DNA sequences
+
 ```{r readSequences}
 library(DNAtranslate)
-# import a .txt file formatted as followed 
-# >Sequence Name
-# ATGCATGCATGCATGCATGCATGC
-# ATGCATGCATGC...
-# it is important that the Sequence Name is followed by a new line and proceeded by a >
-path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate") # this is how to fetch the packages inbuildt dataset for test purposes
+
+# Import a .txt file formatted as follows:
+#   >Sequence Name
+#   ATGCATGCATGCATGCATGCATGC
+#   ATGCATGCATGC...
+# The sequence name must be preceded by a ">" and followed by a new line.
+
+# Fetch the package's built-in dataset for testing purposes:
+path <- system.file("extdata", "exampleSequences.txt", package = "DNAtranslate")
 sequencesDF <- readSequences(path)
 head(sequencesDF)
-
 ```
-# Reverse specific sequence
+
+### Reversing a sequence
+
 ```{r reverseSequence}
 library(DNAtranslate)
-# take that previously created DF and flip a specified sequence
+
+# Flip a specified sequence within the data frame.
 reverse <- reverseSequence(exampleSequences, "HisD TA1538 Mutant Genotype")
 head(reverse)
-# now the sequence with the name "HisD TA1538 Mutant Genotype" is flipped
+# The sequence named "HisD TA1538 Mutant Genotype" is now reversed.
 ```
-# Generate protein sequence from DNA
-```{r translate DNA}
+
+### Translating DNA to protein
+
+```{r translateDNA}
 library(DNAtranslate)
-# add a new column to the sequence DF with the protein sequence that corresponds with the DNA sequence
+
+# Add a new column containing the protein sequence that corresponds to each DNA sequence.
 proteinSequence <- translateDNA(exampleSequences, offset = 0)
 head(proteinSequence)
 ```

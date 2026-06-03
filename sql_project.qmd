@@ -1,11 +1,11 @@
 ---
-title: "SQL project"
+title: "SQL Project: Analyzing UFO Sightings"
+toc: true
 ---
 
-**NOTE: This is joint work with Joseph Dee.**
-github can be found at https://github.com/ADC-405-S26/Project_2_SQL_Team_13/tree/main
+*Joint work with Joseph Dee. Source code is available on [GitHub](https://github.com/ADC-405-S26/Project_2_SQL_Team_13/tree/main).*
 
-# load packages and connect to database server
+This project builds a small analytical database from the [TidyTuesday UFO sightings dataset](https://github.com/rfordatascience/tidytuesday/blob/main/data/2023/2023-06-20/readme.md) and uses SQL to explore when, where, and how sightings were reported.
 
 ```{r setup}
 #| message: false
@@ -14,64 +14,55 @@ github can be found at https://github.com/ADC-405-S26/Project_2_SQL_Team_13/tree
 library(tidyverse)
 library(dbplyr)
 library(RMariaDB)
-library(duckdb) # R package for building a duckdb database locally.
-
-#  put comment on the code/codechunks that we wrote
-
-# install and load more packages if required
-# install.packages("package_name")
-# library(package_name)
+library(duckdb) # R package for building a DuckDB database locally.
 ```
-# Aiden
 
-### ---------------------------------------------------------------------------
-# Accessing data
-Data was taken from here https://github.com/rfordatascience/tidytuesday/blob/main/data/2023/2023-06-20/readme.md
-There are three .csv files "ufo_sightings.csv" "places.csv" "day_parts_map.csv"
-ufo_sightings.csv has city and state in common with places.csv
-ufo_sightings.csv has reported_date_utc and posted data in common with day_parts_map.csv
+## Accessing the data
 
-- Aiden
+The data consists of three CSV files: `ufo_sightings.csv`, `places.csv`, and `day_parts_map.csv`. `ufo_sightings` shares `city` and `state` with `places`, and shares its date fields with `day_parts_map`, which lets the tables be joined together. After loading the files, we remove duplicate rows so that each table has a clean key, then write the cleaned data back out for import into the database.
 
 ```{r}
-
+#| message: false
+#| warning: false
 raw_ufo_sightings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-06-20/ufo_sightings.csv')
 raw_places <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-06-20/places.csv')
 day_parts_map <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-06-20/day_parts_map.csv')
 
-glimpse(raw_ufo_sightings) #shape has lots of NAs and day_part has some NAs
-glimpse(raw_places) #alternative_city_names & elevation_m has NAs
-glimpse(day_parts_map) # No NAs
+glimpse(raw_ufo_sightings) # `shape` has many NAs; `day_part` has some NAs
+glimpse(raw_places)        # `alternative_city_names` and `elevation_m` have NAs
+glimpse(day_parts_map)     # No NAs
 
-#places <- raw_places %>% slice(-167,-986,-3904,-989,-815,-992,-8302,-69,-1315) # Daytona Beach (and some others) appear multiple times
-places <- raw_places %>% distinct(latitude, longitude, .keep_all = TRUE) # there are ~625 duplicate longitude AND latitude entries
-ufo_sightings <- raw_ufo_sightings %>% distinct(reported_date_time_utc, city, .keep_all = TRUE) #we want to use reported_date_time_utc as key
+# `places` contains ~625 rows with duplicate latitude/longitude pairs.
+places <- raw_places %>% distinct(latitude, longitude, .keep_all = TRUE)
 
-write_csv(ufo_sightings, "ufo_sightings.csv")  
+# We use (reported_date_time_utc, city) as the key for sightings.
+ufo_sightings <- raw_ufo_sightings %>% distinct(reported_date_time_utc, city, .keep_all = TRUE)
+
+write_csv(ufo_sightings, "ufo_sightings.csv")
 write_csv(places, "places.csv")
-write_csv(day_parts_map, "day_parts_map.csv") 
+write_csv(day_parts_map, "day_parts_map.csv")
 ```
-# Aiden
 
-### ---------------------------------------------------------------------------
-# Designing the database
+## Designing the database
+
+We store the data in a local DuckDB database and define an explicit schema for each table, including column types, nullability, and primary keys. Column types follow the [DuckDB data type reference](https://duckdb.org/docs/current/sql/data_types/overview).
 
 ```{r}
-con_UFO <- DBI::dbConnect(duckdb::duckdb(), dbdir = "UFO_db")
+# Use an in-memory DuckDB database. Every table is rebuilt from the CSV files
+# on each render, so nothing needs to persist to disk. An in-memory database
+# also avoids the file-lock error that occurs on Windows when a previous
+# connection to a "UFO_db" file is still open.
+con_UFO <- DBI::dbConnect(duckdb::duckdb(), dbdir = ":memory:")
 ```
-# Aiden
 
 ```{sql connection = con_UFO}
 DROP TABLE IF EXISTS ufo_sightings;
 DROP TABLE IF EXISTS places;
 DROP TABLE IF EXISTS day_parts_map;
 ```
-To get the right times refer here https://duckdb.org/docs/current/sql/data_types/overview
-column | type | nulls allowed? | default value
-I am not sure what we should set the default values too so I have not included them at this stage
 
-Currently there is no primary key for this table. I have emailed professor abhishek about what to do.
-# Aiden
+The `ufo_sightings` table uses a composite primary key of `reported_date_time_utc` and `city`. Default values are left unset.
+
 ```{sql connection = con_UFO}
 CREATE TABLE ufo_sightings (
   reported_date_time TIMESTAMP NOT NULL,
@@ -86,23 +77,21 @@ CREATE TABLE ufo_sightings (
   summary VARCHAR,
   has_images BOOLEAN NOT NULL,
   day_part VARCHAR,
-  PRIMARY KEY (reported_date_time_utc, city) 
+  PRIMARY KEY (reported_date_time_utc, city)
 );
 ```
-# Aiden
 
 ```{sql connection=con_UFO}
-
 COPY ufo_sightings FROM 'ufo_sightings.csv' (FORMAT CSV, HEADER, NULL 'NA');
-
 ```
-# Aiden
+
+The `places` table uses latitude and longitude as its primary key.
 
 ```{sql connection = con_UFO}
 CREATE TABLE places (
   city VARCHAR NOT NULL,
   alternate_city_names VARCHAR,
-  state VARCHAR, 
+  state VARCHAR,
   country VARCHAR NOT NULL,
   country_code VARCHAR NOT NULL,
   latitude DOUBLE NOT NULL,
@@ -110,18 +99,16 @@ CREATE TABLE places (
   timezone VARCHAR NOT NULL,
   population BIGINT NOT NULL,
   elevation_m BIGINT,
-  PRIMARY KEY (latitude, longitude) 
+  PRIMARY KEY (latitude, longitude)
 );
 ```
-# Aiden
 
 ```{sql connection=con_UFO}
-
 COPY places FROM 'places.csv' (FORMAT CSV, HEADER, NULL 'NA');
-
 ```
-# Aiden
-day_parts_map has NAs within "nautical_twilight_begin" and "astronomical_twilight_end"
+
+The `day_parts_map` table contains NAs in `nautical_twilight_begin` and `astronomical_twilight_end`, so those columns allow nulls.
+
 ```{sql connection = con_UFO}
 CREATE TABLE day_parts_map (
  rounded_lat INT NOT NULL,
@@ -136,39 +123,33 @@ CREATE TABLE day_parts_map (
  civil_twilight_end TIME,
  nautical_twilight_end TIME,
  astronomical_twilight_end TIME,
-  PRIMARY KEY (rounded_lat, rounded_long, rounded_date) 
+  PRIMARY KEY (rounded_lat, rounded_long, rounded_date)
 );
 ```
-# Aiden
 
 ```{sql connection=con_UFO}
-
 COPY day_parts_map FROM 'day_parts_map.csv' (FORMAT CSV, HEADER, NULL 'NA');
-
 ```
-# Aiden
-### ---------------------------------------------------------------------------
-# Querying data using SQL
 
-1. This query examines when UFO sightings happened most often by grouping reports by day_part. This allowed us to compare the number of sightings across categories such as night, afternoon, morning, and different twilight periods.
+## Querying the data
+
+### Query 1: Sightings by part of day
+
+This query examines when sightings were reported most often by grouping reports by `day_part`, allowing us to compare counts across categories such as night, afternoon, morning, and the various twilight periods.
 
 ```{sql connection=con_UFO}
-
 SELECT day_part, COUNT(*) AS sightings
 FROM ufo_sightings
 GROUP BY day_part
 ORDER BY sightings DESC;
-
 ```
-# Jeb
 
-The results show that UFO sightings were most commonly reported at night. This suggests that sightings were concentrated during darker conditions, when unusual lights or objects may have been easier to notice. It also shows that time of day was an important part of the reporting pattern in this dataset.
+Sightings were most commonly reported at night, suggesting they were concentrated during darker conditions, when unusual lights or objects may be easier to notice. Time of day was clearly an important part of the reporting pattern in this dataset.
 
+### Query 2: Population-adjusted sightings by state
 
+This query compares sightings across U.S. states while adjusting for population. Rather than counting raw totals, it calculates sightings per million residents, giving a fairer comparison between large and small states.
 
-
-
-2. This query compares UFO sightings across U.S. states while adjusting for population. Instead of only counting total sightings, it calculates sightings per million residents, which gives a fairer comparison between large and small states.
 ```{sql connection=con_UFO}
 WITH state_pop AS (
   SELECT state, SUM(population) AS pop
@@ -196,17 +177,15 @@ FROM state_sightings s
 JOIN state_pop p
   ON s.state = p.state
 ORDER BY sightings_per_million DESC;
-
-
 ```
-The population-adjusted results help identify states where sightings were unusually common relative to the number of people living there. This is more useful than raw totals because larger states naturally tend to have more reports. By adjusting for population, the query highlights states with higher relative reporting rates.
 
+Adjusting for population highlights states where sightings were unusually common relative to the number of residents. This is more informative than raw totals, since larger states naturally tend to accumulate more reports.
 
-# Jeb
+### Query 3: Reported shape by part of day
 
-3. This query examines whether reported UFO shapes varied by part of day. By grouping sightings by both day_part and shape, we could compare how different types of sightings appeared across different lighting conditions.
+This query examines whether reported shapes varied by part of day. Grouping by both `day_part` and `shape` lets us compare how different types of sightings appeared across different lighting conditions.
+
 ```{sql connection=con_UFO}
-
 SELECT day_part, shape, COUNT(*) AS count
 FROM ufo_sightings
 WHERE day_part IS NOT NULL
@@ -215,12 +194,14 @@ WHERE day_part IS NOT NULL
 GROUP BY day_part, shape
 ORDER BY count DESC;
 ```
-The results show how reported shapes differed across parts of the day. This helps connect what people reported seeing with when they reported seeing it. If certain shapes appeared more often at night or around dusk, that may suggest that lighting conditions affected how sightings were perceived and described.
 
+The results connect what people reported seeing with when they reported it. If certain shapes appear more often at night or around dusk, that may suggest lighting conditions influenced how sightings were perceived and described.
 
-4. This query examines whether certain UFO shapes were more likely to include images. For each reported shape, it counts the total number of sightings, counts how many included images, and calculates the percentage of sightings with images. We limited the results to shapes with at least 50 sightings so that very rare categories would not distort the comparison.
+### Query 4: Image documentation by shape
+
+This query examines whether certain shapes were more likely to include images. For each shape it counts total sightings, counts how many included images, and calculates the percentage with images. We limit the results to shapes with at least 50 sightings so that rare categories do not distort the comparison.
+
 ```{sql connection=con_UFO}
-
 SELECT shape,
   COUNT(*) AS total_sightings,
   SUM(CASE WHEN has_images THEN 1 ELSE 0 END) AS with_images,
@@ -231,77 +212,15 @@ GROUP BY shape
 HAVING COUNT(*) >= 50
 ORDER BY pct_with_images DESC;
 ```
-The results help show whether some UFO shapes were more likely to be visually documented than others. This adds another layer to the analysis because it does not just ask what people saw, but whether certain types of sightings were more likely to be supported by images. This may reflect differences in visibility, duration, or how distinct certain shapes appeared to observers.
 
-2. This query compares UFO sightings across U.S. states while adjusting for population. Instead of only counting total sightings, it calculates sightings per million residents, which gives a fairer comparison between large and small states.
-```{sql connection=con_UFO}
-WITH state_pop AS (
-  SELECT state, SUM(population) AS pop
-  FROM (
-    SELECT DISTINCT city, state, country_code, population
-    FROM places
-    WHERE country_code = 'US'
-      AND state IS NOT NULL
-      AND population > 0
-  )
-  GROUP BY state
-),
-state_sightings AS (
-  SELECT state, COUNT(*) AS sightings
-  FROM ufo_sightings
-  WHERE country_code = 'US'
-    AND state IS NOT NULL
-  GROUP BY state
-)
-SELECT s.state,
-       s.sightings,
-       p.pop,
-       s.sightings * 1000000.0 / p.pop AS sightings_per_million
-FROM state_sightings s
-JOIN state_pop p
-  ON s.state = p.state
-ORDER BY sightings_per_million DESC;
+This adds another layer to the analysis: it asks not only what people saw, but whether certain types of sightings were more likely to be supported by an image. Such differences may reflect variation in visibility, duration, or how distinct a given shape appeared to observers.
 
+## Visualizations
 
-```
-The population-adjusted results help identify states where sightings were unusually common relative to the number of people living there. This is more useful than raw totals because larger states naturally tend to have more reports. By adjusting for population, the query highlights states with higher relative reporting rates.
+### Sightings over time
 
+This visualization examines how sightings changed over time by grouping reports by year, showing broader reporting trends across the dataset.
 
-# Jeb
-
-3. This query examines whether reported UFO shapes varied by part of day. By grouping sightings by both day_part and shape, we could compare how different types of sightings appeared across different lighting conditions.
-```{sql connection=con_UFO}
-
-SELECT day_part, shape, COUNT(*) AS count
-FROM ufo_sightings
-WHERE day_part IS NOT NULL
-  AND shape IS NOT NULL
-  AND shape IN ('light', 'circle', 'triangle', 'fireball', 'sphere', 'disk', 'oval', 'formation')
-GROUP BY day_part, shape
-ORDER BY count DESC;
-```
-The results show how reported shapes differed across parts of the day. This helps connect what people reported seeing with when they reported seeing it. If certain shapes appeared more often at night or around dusk, that may suggest that lighting conditions affected how sightings were perceived and described.
-
-
-4. This query examines whether certain UFO shapes were more likely to include images. For each reported shape, it counts the total number of sightings, counts how many included images, and calculates the percentage of sightings with images. We limited the results to shapes with at least 50 sightings so that very rare categories would not distort the comparison.
-```{sql connection=con_UFO}
-
-SELECT shape,
-  COUNT(*) AS total_sightings,
-  SUM(CASE WHEN has_images THEN 1 ELSE 0 END) AS with_images,
-  100.0 * SUM(CASE WHEN has_images THEN 1 ELSE 0 END) / COUNT(*) AS pct_with_images
-FROM ufo_sightings
-WHERE shape IS NOT NULL
-GROUP BY shape
-HAVING COUNT(*) >= 50
-ORDER BY pct_with_images DESC;
-```
-The results help show whether some UFO shapes were more likely to be visually documented than others. This adds another layer to the analysis because it does not just ask what people saw, but whether certain types of sightings were more likely to be supported by images. This may reflect differences in visibility, duration, or how distinct certain shapes appeared to observers.
-
-### ---------------------------------------------------------------------------
-# Creating data visualizations
-
-This visualization examines how UFO sightings changed over time by grouping reports by year. The graph helps show broader reporting trends across the dataset rather than focusing only on one category, location, or time of day.
 ```{r}
 sightings_by_year <- DBI::dbGetQuery(con_UFO, "
   SELECT EXTRACT(year FROM reported_date_time) AS year,
@@ -318,15 +237,15 @@ ggplot(sightings_by_year, aes(x = year, y = sightings)) +
     title = "UFO Sightings Over Time",
     x = "Year",
     y = "Number of Sightings"
-  ) 
+  )
 ```
-This visualization shows how the number of reported UFO sightings changed over time. Sightings remained relatively low and stable for much of the early period, but began to increase sharply starting in the late 1990s and early 2000s. The number of sightings then reached a peak before declining in more recent years. This pattern suggests that reporting behavior or public interest may have changed significantly over time.
 
+Sightings remained relatively low and stable through much of the early period, then increased sharply beginning in the late 1990s and early 2000s before peaking and declining in more recent years. This pattern suggests that reporting behavior or public interest changed considerably over time.
 
+### Sightings by part of day (raw counts)
 
+This visualization compares the number of reports across parts of the day, making it easier to see whether sightings were concentrated during darker periods or spread more evenly.
 
-
-This visualization shows when UFO sightings were reported most often by comparing the number of reports across parts of the day. The graph makes it easier to see whether sightings were concentrated during darker periods or spread more evenly across the day.
 ```{r}
 daypart_counts <- dbGetQuery(con_UFO, "
   SELECT day_part, COUNT(*) AS sightings
@@ -343,14 +262,13 @@ ggplot(daypart_counts, aes(x = reorder(day_part, sightings), y = sightings)) +
     x = "Part of Day",
     y = "Number of Sightings"
   )
-
 ```
 
-This visualization shows when UFO sightings were reported most often by comparing the number of reports across different parts of the day. Sightings were overwhelmingly concentrated at night, with significantly more reports than any other time period. There were also notable numbers of sightings during the afternoon and dusk periods, while morning and dawn categories were much lower. This pattern suggests that sightings were more likely to be reported in darker conditions, when unusual lights or objects may be easier to observe.
+Sightings were overwhelmingly concentrated at night, with far more reports than any other period. The afternoon and dusk periods saw notable numbers as well, while morning and dawn were much lower. This again suggests sightings were more likely to be reported in darker conditions.
 
+### Sightings by part of day (normalized per hour)
 
-- Aiden Below
-To more accurately display during which parts of the day UFO sightings are commononly spotted we need to normalize the data according to the portion of time "night" "sunset" takes up, we see that night has a ton of obversations, its also much longer than "sunset". If we round the lat and long values within "places" to match the lat long values within "day_parts_map" we can then get the duration of each event at each location on the date specified within "ufo_sightings" under "reported_date_time_utc" as well as what day_parts_map category it fell under "night" "dusk" etc. I knew it was possible to do this in SQL but I could not get it to work so I explained my thoughts to chatgpt so it would write the actual SQL code for my reasoning. Code below written by ChatGPT (https://chatgpt.com/share/69ea9eed-59d4-83ea-98fd-9de727a5c9f1)
+Raw counts are misleading because "night" spans far more hours than "dusk" or "dawn." To account for this, the query below normalizes sightings by the duration of each day-part at each rounded location and date, yielding sightings per available hour. The SQL for this normalization was drafted with the assistance of ChatGPT ([conversation](https://chatgpt.com/share/69ea9eed-59d4-83ea-98fd-9de727a5c9f1)), based on my approach of rounding the latitude and longitude in `places` to match `day_parts_map` and joining on rounded location and date.
 
 ```{r}
 daypart_per_hour <- dbGetQuery(con_UFO, "
@@ -505,7 +423,6 @@ ORDER BY sightings_per_hour DESC;
 ")
 ```
 
-
 ```{r}
 ggplot(daypart_per_hour, aes(x = reorder(day_part, sightings), y = sightings_per_hour)) +
   geom_col() +
@@ -517,6 +434,10 @@ ggplot(daypart_per_hour, aes(x = reorder(day_part, sightings), y = sightings_per
   )
 ```
 
-After normalizing for the portion of day that each part of the day occupies we can see that there is a much higher density of detections during dusk and dawn compared to night morning and night. Dusk and Dawn are the worst times for visibility. During dawn and dusk low sun angles create blinding glare, while rapidly changing light levels make it difficult for the human eye to adjust, reducing peripheral vision and depth perception. This likely explains the large number of UFO sightings seen during these times.
+After normalizing for the share of the day each part occupies, dusk and dawn show a much higher density of sightings than night, morning, or afternoon. Dusk and dawn are also the times of poorest visibility: low sun angles create glare, and rapidly changing light levels make it harder for the eye to adjust, reducing peripheral vision and depth perception. This may help explain the elevated number of sightings reported during these periods.
 
-
+```{r}
+#| include: false
+# Close the connection and shut down DuckDB so the process releases cleanly.
+DBI::dbDisconnect(con_UFO, shutdown = TRUE)
+```
